@@ -7,6 +7,8 @@
     <title>Vitanova</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script type="module" src="./script.js"></script>
 </head>
 
@@ -109,33 +111,44 @@
             <p class="text-gray-700 text-center mb-6">Register now to secure your spot at Vitanova and embark on a
                 journey of spiritual renewal and discovery. Join us as we embrace new life in Christ and experience the
                 joy of salvation together!</p>
-            <form class="space-y-6 md:space-y-8 relative z-10">
+            <!-- <form class="space-y-6 md:space-y-8 relative z-10"> -->
+            <form id="registrationForm" class="space-y-6 md:space-y-8 relative z-10">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input type="text" id="name" name="name" placeholder="Name"
-                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm">
-                    <input type="text" id="contact_number" name="contact_number" placeholder="Contact Number"
-                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm">
+                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
+                        required>
+                    <input type="number" id="contact_number" name="contact_number" placeholder="Contact Number"
+                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
+                        required>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" id="whatsapp_number" name="whatsapp_number" placeholder="WhatsApp Number"
-                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm">
-                    <input type="text" id="year" name="year" placeholder="Year"
-                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm">
+                    <input type="number" id="whatsapp_number" name="whatsapp_number" placeholder="WhatsApp Number"
+                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
+                        required>
+                    <input type="number" id="year" name="year" placeholder="Year"
+                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
+                        required>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input type="text" id="branch" name="branch" placeholder="Branch"
-                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm">
+                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
+                        required>
                     <input type="text" id="batch" name="batch" placeholder="Batch"
-                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm">
+                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
+                        required>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <select id="hosteler" name="hosteler"
-                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm">
+                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
+                        required>
+                        <option value="">Select Hosteler/Day Scholar</option>
                         <option value="hosteler">Hosteler</option>
                         <option value="day_scholar">Day Scholar</option>
                     </select>
                     <select id="diet_preference" name="diet_preference"
-                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm">
+                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
+                        required>
+                        <option value="">Select Diet Preference</option>
                         <option value="non_veg">Non-Veg</option>
                         <option value="veg">Veg</option>
                     </select>
@@ -143,6 +156,7 @@
                 <button type="submit"
                     class="bg-indigo-800 text-white py-3 px-6 rounded-md font-medium shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Register</button>
             </form>
+
         </div>
         <img class="absolute inset-0 w-full h-full object-cover  z-[-10]" src="./assets/footer.png" alt="">
     </div>
