@@ -106,6 +106,7 @@ document
       .add(formObject)
       .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
+        alert(`Hello ${formObject.name} You are registered`);
         // Reset form after successful submission
         this.reset();
       })
