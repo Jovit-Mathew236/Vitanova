@@ -81,9 +81,10 @@ document
           }
           break;
         case "year":
-          // Validate year format (should be a number)
-          if (!/^\d{4}$/.test(value)) {
-            showError(key, "Please enter a valid year (e.g., 2022).");
+          // Validate year format (should be a number between 1 and 4)
+          const year = parseInt(value);
+          if (isNaN(year) || year < 1 || year > 4) {
+            showError(key, "Please enter a valid year (1 to 4).");
             hasErrors = true;
           }
           break;
