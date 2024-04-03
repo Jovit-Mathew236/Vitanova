@@ -119,19 +119,40 @@
                     <input type="number" id="whatsapp_number" name="whatsapp_number" placeholder="WhatsApp Number"
                         class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
                         required>
-                    <input type="number" id="year" name="year" placeholder="Year"
+                    <input type="date" id="dob" name="dob" placeholder="Date of Birth"
                         class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
                         required>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" id="branch" name="branch" placeholder="Branch"
+                    <select id="year" name="year"
                         class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
                         required>
+                        <option value="">Select Year</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                    </select>
+                    <select id="branch" name="branch"
+                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
+                        required>
+                        <option value="">Select Branch</option>
+                        <option value="ECS">ECS</option>
+                        <option value="CS">CS</option>
+                        <option value="AD">AD</option>
+                        <option value="CY">CY</option>
+                        <option value="EEE">EEE</option>
+                        <option value="ME">ME</option>
+                        <option value="ECE">ECE</option>
+                        <option value="MCA">MCA</option>
+                        <option value="MBA">MBA</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input type="text" id="batch" name="batch" placeholder="Batch"
                         class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
                         required>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <select id="hosteler" name="hosteler"
                         class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
                         required>
@@ -139,6 +160,8 @@
                         <option value="hosteler">Hosteler</option>
                         <option value="day_scholar">Day Scholar</option>
                     </select>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <select id="diet_preference" name="diet_preference"
                         class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
                         required>
@@ -150,6 +173,7 @@
                 <button type="submit"
                     class="bg-indigo-800 text-white py-3 px-6 rounded-md font-medium shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Register</button>
             </form>
+
 
         </div>
         <img class="absolute inset-0 w-full h-full object-cover  z-[-10]" src="./assets/footer.png" alt="">
