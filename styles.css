@@ -12,6 +12,11 @@ h1 {
     font-family: "Bebas Neue", sans-serif;
 }
 
+/* Hide all slides by default */
+.mySlides {
+    display: none;
+}
+
 /* Adjust placeholder visibility for mobile devices */
 @media screen and (max-width: 768px) {
 

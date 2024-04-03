@@ -32,8 +32,14 @@
 
     <div class="flex flex-col gap-10 my-10 md:my-20">
         <!-- What Section -->
-        <div class="flex flex-col-reverse md:flex-row justify-around items-center">
-            <img class="h-[300px] object-contain w-full md:w-auto" src="./assets/qa1.png" alt="">
+        <div class="flex flex-col-reverse md:flex-row justify-around items-center relative">
+            <div class="slideshow-container w-full md:w-auto">
+                <img class="mySlides h-[300px] object-contain w-full md:w-auto" src="./assets/qa1.png" alt="">
+                <video class="mySlides h-[300px] object-contain w-full md:w-auto" autoplay muted loop>
+                    <source src="./assets/vid1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="w-full md:w-[500px]">
                 <h1 class="font-extrabold text-4xl text-center">What?</h1>
                 <p class="px-5">
@@ -42,6 +48,8 @@
                 </p>
             </div>
         </div>
+
+
 
         <!-- Why Section -->
         <div class="flex flex-col md:flex-row justify-around items-center">
