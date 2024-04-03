@@ -11,3 +11,13 @@ h1 {
     /* font-family: 'Bangers', cursive; */
     font-family: "Bebas Neue", sans-serif;
 }
+
+/* Adjust placeholder visibility for mobile devices */
+@media screen and (max-width: 768px) {
+
+    /* Increase the opacity of the placeholder */
+    input[type="date"]::placeholder {
+        opacity: 0.8;
+        /* Adjust the opacity value as needed */
+    }
+}
