@@ -32,7 +32,7 @@
 
     <div class="flex flex-col gap-10 my-10 md:my-20">
         <!-- What Section -->
-        <div class="flex flex-col md:flex-row justify-around items-center">
+        <div class="flex flex-col-reverse md:flex-row justify-around items-center">
             <img class="h-[300px] object-contain w-full md:w-auto" src="./assets/qa1.png" alt="">
             <div class="w-full md:w-[500px]">
                 <h1 class="font-extrabold text-4xl text-center">What?</h1>
@@ -57,8 +57,11 @@
         </div>
 
         <!-- Programs Section -->
-        <div class="flex flex-col md:flex-row justify-around items-center">
-            <img class="h-[300px] object-contain w-full md:w-auto" src="./assets/qa3.png" alt="">
+        <div class="flex flex-col-reverse md:flex-row justify-around items-center">
+            <!-- <img class="h-[300px] object-contain w-full md:w-auto" src="./assets/qa3.png" alt=""> -->
+            <video class="h-[300px] object-cover px-20 rounded-md w-full md:w-auto" autoplay muted
+                src="./assets//vid2.mp4"></video>
+
             <div class="w-full md:w-[500px]">
                 <h1 class="font-extrabold text-4xl text-center">Programs?</h1>
                 <p class="px-5">
@@ -76,7 +79,8 @@
                     experience what they had and not miss it.
                 </p>
             </div>
-            <img class="h-[300px] object-contain w-full md:w-auto" src="./assets/qa4.png" alt="">
+            <!-- <img class="h-[300px] object-contain w-full md:w-auto" src="./assets/qa4.png" alt=""> -->
+            <video class="h-[300px] object-contain w-full md:w-auto" autoplay muted src="./assets//vid1.mp4"></video>
         </div>
     </div>
 
@@ -119,9 +123,14 @@
                     <input type="number" id="whatsapp_number" name="whatsapp_number" placeholder="WhatsApp Number"
                         class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
                         required>
-                    <input type="date" id="dob" name="dob" placeholder="Date of Birth"
-                        class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
-                        required>
+                    <div class="relative">
+                        <input type="date" id="dob" name="dob"
+                            class="p-4 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm"
+                            required>
+                        <label for="dob"
+                            class="absolute top-0 left-0 mt-3 ml-2 text-sm text-gray-500 cursor-pointer">Date of
+                            Birth</label>
+                    </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <select id="year" name="year"
