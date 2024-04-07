@@ -17,6 +17,10 @@ h1 {
     display: none;
 }
 
+.mySlides1 {
+    display: none;
+}
+
 /* Adjust placeholder visibility for mobile devices */
 @media screen and (max-width: 768px) {
 
