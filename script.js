@@ -213,7 +213,7 @@ const fetchData = () => {
 };
 
 // Automatically fetch data when the window loads
-window.onload = fetchData;
+// window.onload = fetchData;
 
 // Slideshow functions...
 
