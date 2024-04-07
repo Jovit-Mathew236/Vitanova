@@ -142,13 +142,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fetch data only if the user is logged in and on the admin page
   auth.onAuthStateChanged((user) => {
     if (
-      (user && window.location.pathname === "/admin.html") ||
-      window.location.pathname === "/admin"
+      user &&
+      (window.location.pathname === "/admin" ||
+        window.location.pathname === "/admin.html")
     ) {
       fetchData();
     } else if (
-      (!user && window.location.pathname === "/admin.html") ||
-      window.location.pathname === "/admin"
+      !user &&
+      (window.location.pathname === "/admin" ||
+        window.location.pathname === "/admin.html")
     ) {
       // Redirect to login page if user is not logged in
       window.location.href = "login.html";
