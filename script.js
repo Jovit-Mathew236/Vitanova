@@ -113,6 +113,7 @@ function googleSignIn() {
       console.log("User email:", userEmail);
       const allowedEmails = [
         "jovitmathew236@gmail.com",
+        "ashlyvinod2005@gmail.com",
         "jovitmathew236632@gmail.com",
       ];
       if (allowedEmails.includes(userEmail)) {
