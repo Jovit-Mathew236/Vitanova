@@ -103,12 +103,27 @@ function showError(field, message) {
 }
 
 // Function to handle Google sign-in
+// Function to handle Google sign-in
 function googleSignIn() {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
-      // Redirect to the admin page after successful login
-      window.location.href = "admin.html";
+      // Check the email address before redirecting
+      const userEmail = result.user.email;
+      console.log("User email:", userEmail);
+      const allowedEmails = [
+        "jovitmathew236@gmail.com",
+        "jovitmathew236632@gmail.com",
+      ];
+      if (allowedEmails.includes(userEmail)) {
+        // Redirect to the admin page after successful login
+        window.location.href = "admin.html";
+      } else {
+        // Redirect to unauthorized page if email is not allowed
+        alert("You are not authorized to access this page.");
+        auth.signOut();
+        window.location.href = "login.html";
+      }
     })
     .catch((error) => {
       // Handle errors here.
