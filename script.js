@@ -185,6 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Function to fetch data from Firestore and populate the table
 const fetchData = () => {
   console.log("Fetching data...");
+  const uniqueEntries = new Map(); // Map to store unique entries based on a specific field
   getDocs(collection(db, "registrations"))
     .then((querySnapshot) => {
       const tableBody = document.getElementById("tableBody");
@@ -193,22 +194,26 @@ const fetchData = () => {
 
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        const row = `
-          <tr>
-              <td class="px-6 py-4 whitespace-nowrap">${serialNumber}</td>
-              <td class="px-6 py-4 whitespace-nowrap">${data.name}</td>
-              <td class="px-6 py-4 whitespace-nowrap">${data.contact_number}</td>
-              <td class="px-6 py-4 whitespace-nowrap">${data.whatsapp_number}</td>
-              <td class="px-6 py-4 whitespace-nowrap">${data.dob}</td>
-              <td class="px-6 py-4 whitespace-nowrap">${data.year}</td>
-              <td class="px-6 py-4 whitespace-nowrap">${data.branch}</td>
-              <td class="px-6 py-4 whitespace-nowrap">${data.batch}</td>
-              <td class="px-6 py-4 whitespace-nowrap">${data.hosteler}</td>
-              <td class="px-6 py-4 whitespace-nowrap">${data.diet_preference}</td>
-          </tr>
-        `;
-        tableBody.innerHTML += row;
-        serialNumber++; // Increment the serial number for the next row
+        // Check if the entry with the same mobile number already exists
+        if (!uniqueEntries.has(data.contact_number)) {
+          uniqueEntries.set(data.contact_number, true); // Mark the entry as seen
+          const row = `
+            <tr>
+                <td class="px-6 py-4 whitespace-nowrap">${serialNumber}</td>
+                <td class="px-6 py-4 whitespace-nowrap">${data.name}</td>
+                <td class="px-6 py-4 whitespace-nowrap">${data.contact_number}</td>
+                <td class="px-6 py-4 whitespace-nowrap">${data.whatsapp_number}</td>
+                <td class="px-6 py-4 whitespace-nowrap">${data.dob}</td>
+                <td class="px-6 py-4 whitespace-nowrap">${data.year}</td>
+                <td class="px-6 py-4 whitespace-nowrap">${data.branch}</td>
+                <td class="px-6 py-4 whitespace-nowrap">${data.batch}</td>
+                <td class="px-6 py-4 whitespace-nowrap">${data.hosteler}</td>
+                <td class="px-6 py-4 whitespace-nowrap">${data.diet_preference}</td>
+            </tr>
+          `;
+          tableBody.innerHTML += row;
+          serialNumber++; // Increment the serial number for the next row
+        }
       });
     })
     .catch((error) => {
