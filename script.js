@@ -183,6 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Function to fetch data from Firestore and populate the table
+// Function to fetch data from Firestore and populate the table
 const fetchData = () => {
   console.log("Fetching data...");
   const uniqueEntries = new Map(); // Map to store unique entries based on a specific field
@@ -191,6 +192,7 @@ const fetchData = () => {
       const tableBody = document.getElementById("tableBody");
       tableBody.innerHTML = ""; // Clear existing table content
       let serialNumber = 1; // Initialize the serial number counter
+      let registrationCount = 0; // Initialize the registration count
 
       querySnapshot.forEach((doc) => {
         const data = doc.data();
@@ -201,8 +203,8 @@ const fetchData = () => {
             <tr>
                 <td class="px-6 py-4 whitespace-nowrap">${serialNumber}</td>
                 <td class="px-6 py-4 whitespace-nowrap">${data.name}</td>
-                <td class="px-6 py-4 whitespace-nowrap">${data.contact_number}</td>
-                <td class="px-6 py-4 whitespace-nowrap">${data.whatsapp_number}</td>
+                <td class="px-6 py-4 whitespace-nowrap"><a href="tel:+91${data.contact_number}">${data.contact_number}</a></td>
+                <td class="px-6 py-4 whitespace-nowrap"><a href="http://wa.me/${data.whatsapp_number}">${data.whatsapp_number}</a></td>
                 <td class="px-6 py-4 whitespace-nowrap">${data.dob}</td>
                 <td class="px-6 py-4 whitespace-nowrap">${data.year}</td>
                 <td class="px-6 py-4 whitespace-nowrap">${data.branch}</td>
@@ -213,8 +215,14 @@ const fetchData = () => {
           `;
           tableBody.innerHTML += row;
           serialNumber++; // Increment the serial number for the next row
+          registrationCount++; // Increment the registration count
         }
       });
+
+      // Update the registration count in the HTML
+      const registrationCountElement =
+        document.getElementById("registrationCount");
+      registrationCountElement.textContent = registrationCount;
     })
     .catch((error) => {
       console.log("Error getting documents: ", error);
