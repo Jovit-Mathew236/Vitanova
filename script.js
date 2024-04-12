@@ -232,6 +232,36 @@ const fetchData = () => {
 // Automatically fetch data when the window loads
 // window.onload = fetchData;
 
+// Function to filter table rows based on name
+const filterTableByName = () => {
+  const input = document.getElementById("searchInput");
+  const filter = input.value.toLowerCase();
+  const table = document.getElementById("tableBody");
+  const rows = table.getElementsByTagName("tr");
+
+  for (let i = 0; i < rows.length; i++) {
+    const nameColumn = rows[i].getElementsByTagName("td")[1];
+    if (nameColumn) {
+      const name = nameColumn.textContent || nameColumn.innerText;
+      if (name.toLowerCase().indexOf(filter) > -1) {
+        rows[i].style.display = "";
+      } else {
+        rows[i].style.display = "none";
+      }
+    }
+  }
+};
+
+// Attach event listener to the search input
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.addEventListener("input", filterTableByName);
+  } else {
+    console.error("Search input element not found.");
+  }
+});
+
 // Slideshow functions...
 
 var slideIndex = 0;
