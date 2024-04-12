@@ -117,6 +117,10 @@ function googleSignIn() {
         "liz424608@gmail.com",
         "albertjames954422@gmail.com",
         "stephysm.1199@gmail.com",
+        "jofinjohny111@gmail.com",
+        "jeswinpriji@gmail.com",
+        "sharonsayaji7@gmail.com",
+        "ajayvjohny2002@gmail.com",
         "jovitmathew236632@gmail.com",
       ];
       if (allowedEmails.includes(userEmail)) {
