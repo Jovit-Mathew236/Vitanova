@@ -188,9 +188,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Function to fetch data from Firestore and populate the table
 // Function to fetch data from Firestore and populate the table
+// Function to fetch data from Firestore and populate the table
 const fetchData = () => {
   console.log("Fetching data...");
   const uniqueEntries = new Map(); // Map to store unique entries based on a specific field
+  let dayScholarCount = 0; // Initialize the count of day scholars
+  let hostelerCount = 0; // Initialize the count of hostelers
+
   getDocs(collection(db, "registrations"))
     .then((querySnapshot) => {
       const tableBody = document.getElementById("tableBody");
@@ -200,23 +204,30 @@ const fetchData = () => {
 
       querySnapshot.forEach((doc) => {
         const data = doc.data();
+        // Increment the count based on the value of the 'hosteler' field
+        if (data.hosteler === "hosteler") {
+          hostelerCount++;
+        } else if (data.hosteler === "day_scholar") {
+          dayScholarCount++;
+        }
+
         // Check if the entry with the same mobile number already exists
         if (!uniqueEntries.has(data.contact_number)) {
           uniqueEntries.set(data.contact_number, true); // Mark the entry as seen
           const row = `
-            <tr>
-                <td class="px-6 py-4 whitespace-nowrap">${serialNumber}</td>
-                <td class="px-6 py-4 whitespace-nowrap">${data.name}</td>
-                <td class="px-6 py-4 whitespace-nowrap"><a href="tel:+91${data.contact_number}">${data.contact_number}</a></td>
-                <td class="px-6 py-4 whitespace-nowrap"><a href="http://wa.me/${data.whatsapp_number}">${data.whatsapp_number}</a></td>
-                <td class="px-6 py-4 whitespace-nowrap">${data.dob}</td>
-                <td class="px-6 py-4 whitespace-nowrap">${data.year}</td>
-                <td class="px-6 py-4 whitespace-nowrap">${data.branch}</td>
-                <td class="px-6 py-4 whitespace-nowrap">${data.batch}</td>
-                <td class="px-6 py-4 whitespace-nowrap">${data.hosteler}</td>
-                <td class="px-6 py-4 whitespace-nowrap">${data.diet_preference}</td>
-            </tr>
-          `;
+                      <tr>
+                          <td class="px-6 py-4 whitespace-nowrap">${serialNumber}</td>
+                          <td class="px-6 py-4 whitespace-nowrap">${data.name}</td>
+                          <td class="px-6 py-4 whitespace-nowrap"><a href="tel:+91${data.contact_number}">${data.contact_number}</a></td>
+                          <td class="px-6 py-4 whitespace-nowrap"><a href="http://wa.me/${data.whatsapp_number}">${data.whatsapp_number}</a></td>
+                          <td class="px-6 py-4 whitespace-nowrap">${data.dob}</td>
+                          <td class="px-6 py-4 whitespace-nowrap">${data.year}</td>
+                          <td class="px-6 py-4 whitespace-nowrap">${data.branch}</td>
+                          <td class="px-6 py-4 whitespace-nowrap">${data.batch}</td>
+                          <td class="px-6 py-4 whitespace-nowrap">${data.hosteler}</td>
+                          <td class="px-6 py-4 whitespace-nowrap">${data.diet_preference}</td>
+                      </tr>
+                  `;
           tableBody.innerHTML += row;
           serialNumber++; // Increment the serial number for the next row
           registrationCount++; // Increment the registration count
@@ -227,6 +238,14 @@ const fetchData = () => {
       const registrationCountElement =
         document.getElementById("registrationCount");
       registrationCountElement.textContent = registrationCount;
+
+      // Update the day scholar count in the HTML
+      const dayScholarCountElement = document.getElementById("dayScholarCount");
+      dayScholarCountElement.textContent = dayScholarCount;
+
+      // Update the hosteler count in the HTML
+      const hostelerCountElement = document.getElementById("hostelerCount");
+      hostelerCountElement.textContent = hostelerCount;
     })
     .catch((error) => {
       console.log("Error getting documents: ", error);
