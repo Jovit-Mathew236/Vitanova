@@ -205,15 +205,16 @@ const fetchData = () => {
       querySnapshot.forEach((doc) => {
         const data = doc.data();
         // Increment the count based on the value of the 'hosteler' field
-        if (data.hosteler === "hosteler") {
-          hostelerCount++;
-        } else if (data.hosteler === "day_scholar") {
-          dayScholarCount++;
-        }
+        
 
         // Check if the entry with the same mobile number already exists
         if (!uniqueEntries.has(data.contact_number)) {
           uniqueEntries.set(data.contact_number, true); // Mark the entry as seen
+          if (data.hosteler === "hosteler") {
+            hostelerCount++;
+          } else if (data.hosteler === "day_scholar") {
+            dayScholarCount++;
+          }
           const row = `
                       <tr>
                           <td class="px-6 py-4 whitespace-nowrap">${serialNumber}</td>
